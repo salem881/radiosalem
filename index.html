@@ -22,7 +22,17 @@
         #wrapper { position: relative; }
              }
     </style>
-    <script src="audiojs/jquery.js"></script>
+   
+  </head>
+  <body>
+    <!--- inicio informacion de la señal //-->
+Canción actual:<br /><span class="cc_streaminfo" data-type="song" data-username="abmoreno">Cargando ...</span>
+<!--- Fin informacion de la señal //-->
+<div id='wrapper'>  
+<h1>Radio Salem 88.1 FM <em>(2017)</em></h1>
+<audio preload="none" autoplay="autoplay" ></audio><ol><li><a data-src='http://192.187.112.50:8002/stream' href='#'>Radio Salem Serv. 1</a></li> <li><a data-src='http://radiosalem.no-ip.biz:8003/;stream.nsv' href='#'>Radio Salem Serv. 2</a></li></ol></div>
+<script language='javascript' src='http://192.187.112.50:2199/system/streaminfo.js' type='text/javascript'/> 
+ <script src="audiojs/jquery.js"></script>
     <script src="audiojs/audio.min.js"></script>
     <script>
       $(function() { 
@@ -70,10 +80,5 @@
         })
       });
     </script>
-  </head>
-  <body>
-<div id='wrapper'>  
-<h1>Radio Salem 88.1 FM <em>(2017)</em></h1>
-<audio preload="none" autoplay="autoplay" ></audio><ol><li><a data-src='http://192.187.112.50:8002/stream' href='#'>Radio Salem Serv. 1</a></li> <li><a data-src='http://radiosalem.no-ip.biz:8003/;stream.nsv' href='#'>Radio Salem Serv. 2</a></li></ol></div>
   </body>
 </html>
