@@ -10,21 +10,23 @@
       h1 em { font-style: normal; color: #999; }
       a { color: #888; text-decoration: none; }
       #wrapper { margin: auto; }
-      
       ol { padding: 0px; margin: 0px; list-style: decimal-leading-zero inside; color: #ccc; width: 160px; border-top: 1px solid #ccc; font-size: 0.9em; }
       ol li { position: relative; margin: 0px; padding: 9px 2px 10px; border-bottom: 1px solid #ccc; cursor: pointer; }
       ol li a { display: block; text-indent: -3.3ex; padding: 0px 0px 0px 20px; }
       li.playing { color: #aaa; text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); }
       li.playing a { color: #000; }
       li.playing:before { content: '?'; width: 14px; height: 14px; padding: 3px; line-height: 14px; margin: 0px; position: absolute; left: -24px; top: 9px; color: #000; font-size: 13px; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); }
-      
-      @media screen and (max-device-width: 160px) {
-        #wrapper { position: relative; }
-             }
+      @media screen and (max-device-width: 160px) {#wrapper { position: relative; }}
     </style>
-  
- <script src="audiojs/jquery.js"></script>
-     <script language='javascript' src='http://192.187.112.50:2199/system/streaminfo.js' type='text/javascript'/> 
+   </head>
+  <body>
+<div id='wrapper'>  
+<h1>Radio Salem 88.1 FM <em>(2017)</em></h1>
+<!--- inicio informacion de la señal //-->
+Canci&oacute;n actual:<br /><span class="cc_streaminfo" data-type="song" data-username="abmoreno">Cargando ...</span>
+<!--- Fin informacion de la señal //-->
+<audio preload="none" autoplay="autoplay" ></audio><ol><li><a data-src='http://192.187.112.50:8002/stream' href='#'>Radio Salem Serv. 1</a></li> <li><a data-src='http://radiosalem.no-ip.biz:8003/;stream.nsv' href='#'>Radio Salem Serv. 2</a></li></ol></div>
+   <script src="audiojs/jquery.js"></script>
     <script src="audiojs/audio.min.js"></script>
     <script>
       $(function() { 
@@ -38,14 +40,12 @@
             audio.play();
           }
         });
-        
         // Load in the first track
         var audio = a[0];
             first = $('ol a').attr('data-src');
         $('ol li').first().addClass('playing');
         audio.load(first);
-
-        // Load in a track on click
+       // Load in a track on click
         $('ol li').click(function(e) {
           e.preventDefault();
           $(this).addClass('playing').siblings().removeClass('playing');
@@ -72,14 +72,6 @@
         })
       });
     </script>
-  </head>
-  <body>
-   
-<div id='wrapper'>  
-<h1>Radio Salem 88.1 FM <em>(2017)</em></h1>
-   <!--- inicio informacion de la señal //-->
-Canción actual:<br /><span class="cc_streaminfo" data-type="song" data-username="abmoreno">Cargando ...</span>
-<!--- Fin informacion de la señal //-->
-<audio preload="none" autoplay="autoplay" ></audio><ol><li><a data-src='http://192.187.112.50:8002/stream' href='#'>Radio Salem Serv. 1</a></li> <li><a data-src='http://radiosalem.no-ip.biz:8003/;stream.nsv' href='#'>Radio Salem Serv. 2</a></li></ol></div>
-  </body>
+  <script language='javascript' src='http://192.187.112.50:2199/system/streaminfo.js' type='text/javascript'></script> 
+ </body>
 </html>
