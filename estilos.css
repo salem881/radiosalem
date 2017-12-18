@@ -92,7 +92,7 @@ font-size: 13px;
 text-shadow: 1px 1px 0px #000; 
 }
 
-@media screen and (max-width:930px){
+@media screen and (max-width:954px){
 	header{
 		height:auto;
 		}
