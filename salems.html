@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>salems</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<hearder><div>salem<div></hearder>
+
+<div id="inferior">
+<div class="wrapper">
+<div class="info_str"><p>Cancion: <span data-shoutcast-value="songtitle"></span></p><p>Radio escuchas: <span data-shoutcast-value="currentlisteners"></span>/<span data-shoutcast-value="maxlisteners"></span></p>
+</div>
+<div class="bt_rep">
+<audio id="miAudio" preload="none" ><source src="http://158.69.118.156:9920/stream;stream.nvs" type="audio/mpeg"></audio>
+<a href="javascript:iniciar()" title="Iniciar Radio" class="play" id="btn"></a>
+</div>
+
+</div></div>
+<div class="wrapper">
+En este tutorial aprenderás como hacer un header dinámico que cambia de tamaño y posición dependiendo de la barra de navegación vertical.</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="js/jquery.shoutcast.easy.min.js?host=158.69.118.156&port=9920"></script>
+<script>
+var miAudio=document.getElementById("miAudio");
+var duracion=0;
+var interval;
+miAudio.ondurationchange = function() {
+	duracion=miAudio.duration;
+}
+
+function iniciar()
+{
+	if(miAudio.paused)
+	{
+		// iniciamos
+		miAudio.play();
+		interval=setInterval(mostrarDuracion,100);
+		//document.getElementById("iniciar").innerHTML="&#8545;";
+		document.getElementById("btn").className += " active";
+	}else{
+		// paramos
+		miAudio.pause();
+		clearInterval(interval);
+		//document.getElementById("iniciar").innerHTML="&#8227;";
+		document.getElementById("btn").className = "play";
+	}
+}
+
+function reiniciar()
+{
+	// nos posicionamos al inicio de la cancion
+	miAudio.currentTime=0;
+	if(miAudio.paused)
+	{
+		miAudio.play();
+		interval=setInterval(mostrarDuracion,100);
+	}
+}
+ 
+
+function mostrarDuracion()
+{
+	if(duracion>0)
+	{
+		porcentaje=miAudio.currentTime*100/duracion;
+		document.getElementById("duracion").getElementsByTagName("span")[0].style.width=porcentaje+"px";
+		document.getElementById("duracion").getElementsByTagName("div")[0].innerHTML=parseInt(porcentaje)+"%";
+	}
+}
+</script>
+</body>
+</html>
