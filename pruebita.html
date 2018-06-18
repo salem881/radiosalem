@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+   <html>
+   <head>
+      <title>My Radio Station</title>
+   </head>
+   <body>
+      
+     <p>Now Playing: <span id="songtitle"></span></p>
+      <p>Listeners: <span id="currentlisteners"></span>/<span id="maxlisteners"></span></p>
+      
+      <h2>You just missed</h2>
+      <ul id="played"></ul>
+      
+      
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+     <script type="text/javascript" src='http://www.jrfmnetwork.com/player/components/soundmanager/script/min/shoutcast-min.js'></script>
+<script>
+$.SHOUTcast({
+   host : 'radiosalem.no-ip.biz',
+   port : 8003,
+   interval : 5000,
+   stats : function(){
+      $('#songtitle').text(this.get('songtitle'));
+$('#currentlisteners').text(this.get('currentlisteners'));
+$('#maxlisteners').text(this.get('maxlisteners'));
+   }
+}).startStats();
+</script>
+
+   </body>
+   </html>
