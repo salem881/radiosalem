@@ -1,94 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title data-shoutcast-value="songtitle"> radio -</title>
-<link rel="stylesheet" href="estilo.css">
+  <meta charset="utf-8">
+  <title>JS Bin</title>
 </head>
 <body>
-<hearder><div>salem</div></hearder>
-<h1 data-shoutcast-value="servertitle"></h1>
+<title>My Radio Station</title>
+
+  <h1 data-shoutcast-value="servertitle"></h1>
   
   <p>Now Playing: <span data-shoutcast-value="songtitle"></span></p>
   <p>Listeners: <span data-shoutcast-value="currentlisteners"></span>/<span data-shoutcast-value="maxlisteners"></span></p>
   
   <h2>You just missed</h2>
   <ul id="played"></ul>
-<div id="inferior">
-<div class="wrapper">
-<div class="info_str"><p>Cancion: <span id="songtitle"></span></p><p>Radio escuchas: <span id="currentlisteners"></span>/<span id="maxlisteners"></span></p>
-</div>
-<div class="bt_rep">
-<audio id="miAudio" preload="none" ><source src="http://radiosalem.no-ip.biz:8003/;stream.nvs" type="audio/mpeg"></audio>
-<a href="javascript:iniciar()" title="Iniciar Radio" class="play" id="btn"></a>
-</div>
-
-</div></div>
-<div class="wrapper">
-En este tutorial aprenderás como hacer un header dinámico que cambia de tamaño y posición dependiendo de la barra de navegación vertical.</div>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://rawgit.com/Wavestreaming/jquery-shoutcast/master/jquery.shoutcast.easy.min.js?host=radiosalem.no-ip.biz&port=8003"></script>
-
-	<script>
-$.SHOUTcast({
-   host : 'radiosalem.no-ip.biz',
-   port : 8003,
-   interval : 5000,
-   stats : function(){
-      $('#songtitle').text(this.get('songtitle'));
-$('#currentlisteners').text(this.get('currentlisteners'));
-$('#maxlisteners').text(this.get('maxlisteners'));
-   }
-}).startStats();
-</script>
-<script>
-var miAudio=document.getElementById("miAudio");
-var duracion=0;
-var interval;
-miAudio.ondurationchange = function() {
-	duracion=miAudio.duration;
-}
-
-function iniciar()
-{
-	if(miAudio.paused)
-	{
-		// iniciamos
-		miAudio.play();
-		interval=setInterval(mostrarDuracion,100);
-		//document.getElementById("iniciar").innerHTML="&#8545;";
-		document.getElementById("btn").className += " active";
-	}else{
-		// paramos
-		miAudio.pause();
-		clearInterval(interval);
-		//document.getElementById("iniciar").innerHTML="&#8227;";
-		document.getElementById("btn").className = "play";
-	}
-}
-
-function reiniciar()
-{
-	// nos posicionamos al inicio de la cancion
-	miAudio.currentTime=0;
-	if(miAudio.paused)
-	{
-		miAudio.play();
-		interval=setInterval(mostrarDuracion,100);
-	}
-}
- 
-
-function mostrarDuracion()
-{
-	if(duracion>0)
-	{
-		porcentaje=miAudio.currentTime*100/duracion;
-		document.getElementById("duracion").getElementsByTagName("span")[0].style.width=porcentaje+"px";
-		document.getElementById("duracion").getElementsByTagName("div")[0].innerHTML=parseInt(porcentaje)+"%";
-	}
-}
-</script>
 </body>
 </html>
